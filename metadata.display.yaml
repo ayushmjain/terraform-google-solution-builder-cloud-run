@@ -1,0 +1,64 @@
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-solution-builder-cloud-run-display
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: Cloud Run
+    source:
+      repo: https://github.com/ayushmjain/terraform-google-solution-builder-cloud-run.git
+  ui:
+    input:
+      variables:
+        backend_service_endpoint:
+          name: backend_service_endpoint
+          title: Backend Service Endpoint
+        cloud_run_service_image:
+          name: cloud_run_service_image
+          title: Cloud Run Service Image
+        cloud_run_service_name:
+          name: cloud_run_service_name
+          title: Cloud Run Service Name
+        cloud_sql_database_connection_name:
+          name: cloud_sql_database_connection_name
+          title: Cloud Sql Database Connection Name
+        cloud_sql_database_host:
+          name: cloud_sql_database_host
+          title: Cloud Sql Database Host
+        cloud_sql_database_name:
+          name: cloud_sql_database_name
+          title: Cloud Sql Database Name
+        cloud_sql_dependency:
+          name: cloud_sql_dependency
+          title: Cloud Sql Dependency
+        project_id:
+          name: project_id
+          title: Project Id
+        redis_host:
+          name: redis_host
+          title: Redis Host
+        redis_port:
+          name: redis_port
+          title: Redis Port
+        region:
+          name: region
+          title: Region
+        vpc_access_connector_id:
+          name: vpc_access_connector_id
+          title: Vpc Access Connector Id

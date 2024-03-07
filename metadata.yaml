@@ -1,0 +1,133 @@
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-solution-builder-cloud-run
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: Cloud Run
+    source:
+      repo: https://github.com/ayushmjain/terraform-google-solution-builder-cloud-run.git
+    version: 0.0.1
+    actuationTool:
+      flavor: Terraform
+      version: ">= 0.13"
+    description:
+      tagline: Cloud Run is a managed compute platform that lets you run containers directly on top of Google's scalable infrastructure.
+      detailed: This composition unit creates a Cloud Run service and a Cloud Run service account. This Cloud Run service can be connected to Cloud SQL, Redis.
+      preDeploy: To deploy this blueprint you must have an active billing account and billing permissions.
+    icon: assets/icon.png
+    costEstimate:
+      description: Blueprint cost details
+      url: https://cloud.google.com/products/calculator-legacy#id=c5b0d4ca-341f-4636-bfa5-0f5991288c76
+  content:
+    documentation:
+      - title: Cloud Run
+        url: https://cloud.google.com/run/docs/overview/what-is-cloud-run
+    examples:
+      - name: simple_example
+        location: examples/simple_example
+  interfaces:
+    variables:
+      - name: backend_service_endpoint
+        description: Any backend service endpoint that this cloud run service calls
+        varType: string
+        default: null
+        connections:
+        - compositionUnitID: terraform-google-solution-builder-cloud-run
+          output: cloud_run_service_endpoint
+      - name: cloud_run_service_image
+        description: Cloud Run service container image
+        varType: string
+        required: true
+      - name: cloud_run_service_name
+        description: Cloud Run service name
+        varType: string
+        required: true
+      - name: cloud_sql_database_connection_name
+        description: Cloud SQL Database connection name
+        varType: string
+        default: null
+        connections:
+        - compositionUnitID: terraform-google-solution-builder-cloud-sql
+          output: database_connection_name
+      - name: cloud_sql_database_host
+        description: Cloud SQL Database host
+        varType: string
+        default: null
+        connections:
+        - compositionUnitID: terraform-google-solution-builder-cloud-sql
+          output: database_host
+      - name: cloud_sql_database_name
+        description: Cloud SQL Database name
+        varType: string
+        default: null
+        connections:
+        - compositionUnitID: terraform-google-solution-builder-cloud-sql
+          output: database_name
+      - name: cloud_sql_dependency
+        description: Dependency on Cloud SQL
+        varType: any
+        default: null
+        connections:
+        - compositionUnitID: terraform-google-solution-builder-cloud-sql
+          output: module_dependency
+      - name: project_id
+        description: GCP project ID where the cloud run service is created
+        varType: string
+        required: true
+      - name: redis_host
+        description: Redis host
+        varType: string
+        default: null
+        connections:
+        - compositionUnitID: terraform-google-solution-builder-redis
+          output: redis_host
+      - name: redis_port
+        description: Redis port
+        varType: string
+        default: null
+        connections:
+        - compositionUnitID: terraform-google-solution-builder-redis
+          output: redis_port
+      - name: region
+        description: GCP region where the cloud run service is created
+        varType: string
+        required: true
+      - name: vpc_access_connector_id
+        description: VPC access connector ID used for accessing a VPC network
+        varType: string
+        default: null
+        connections:
+        - compositionUnitID: terraform-google-solution-builder-vpc-network
+          output: vpc_access_connector_id
+    outputs:
+      - name: cloud_run_service_account_name
+      - name: cloud_run_service_endpoint
+      - name: module_dependency
+  requirements:
+    roles:
+      - level: Project
+        roles:
+          - roles/artifactregistry.admin
+          - roles/run.admin
+          - roles/iam.serviceAccountAdmin
+          - roles/iam.serviceAccountUser
+    services:
+      - compute.googleapis.com
+      - run.googleapis.com
