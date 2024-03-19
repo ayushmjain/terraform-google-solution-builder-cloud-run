@@ -15,5 +15,5 @@
  */
 
 output "cloud_run_service_endpoint" {
-  value = google_cloud_run_service.main.status[0].url
+  value =  solution_builder_cloud_run.main.status[0].url
 }

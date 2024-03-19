@@ -23,39 +23,28 @@ spec:
     title: Cloud Run
     source:
       repo: https://github.com/ayushmjain/terraform-google-solution-builder-cloud-run.git
+      sourceType: git
   ui:
     input:
       variables:
-        backend_service_endpoint:
-          name: backend_service_endpoint
-          title: Backend Service Endpoint
+        annotations:
+          name: annotations
+          title: Annotations
         cloud_run_service_image:
           name: cloud_run_service_image
           title: Cloud Run Service Image
         cloud_run_service_name:
           name: cloud_run_service_name
           title: Cloud Run Service Name
-        cloud_sql_database_connection_name:
-          name: cloud_sql_database_connection_name
-          title: Cloud Sql Database Connection Name
-        cloud_sql_database_host:
-          name: cloud_sql_database_host
-          title: Cloud Sql Database Host
-        cloud_sql_database_name:
-          name: cloud_sql_database_name
-          title: Cloud Sql Database Name
-        cloud_sql_dependency:
-          name: cloud_sql_dependency
-          title: Cloud Sql Dependency
+        dependencies:
+          name: dependencies
+          title: Dependencies
+        env_variables:
+          name: env_variables
+          title: Env Variables
         project_id:
           name: project_id
           title: Project Id
-        redis_host:
-          name: redis_host
-          title: Redis Host
-        redis_port:
-          name: redis_port
-          title: Redis Port
         region:
           name: region
           title: Region
