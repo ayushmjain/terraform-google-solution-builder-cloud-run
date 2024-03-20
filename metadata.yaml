@@ -78,7 +78,7 @@ spec:
       description: Environment variables for cloud run service
       varType: map(string)
       defaultValue: {}
-      userInputVariable: true
+      userInputVariable: false
       connections:
       - compositionUnitID: terraform-google-solution-builder-cloud-sql
         type: map
