@@ -41,6 +41,7 @@ To deploy this blueprint you must have an active billing account and billing per
 |------|-------------|
 | cloud\_run\_service\_account\_name | n/a |
 | cloud\_run\_service\_endpoint | n/a |
+| env\_variables | n/a |
 | module\_dependency | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

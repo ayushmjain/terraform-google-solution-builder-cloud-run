@@ -81,29 +81,14 @@ spec:
       userInputVariable: false
       connections:
       - compositionUnitID: terraform-google-solution-builder-cloud-sql
-        type: map
-        key: "CLOUD_SQL_DATABASE_HOST"
-        output: database_host
-      - compositionUnitID: terraform-google-solution-builder-cloud-sql
-        type: map
-        key: "CLOUD_SQL_DATABASE_CONNECTION_NAME"
-        output: database_connection_name
-      - compositionUnitID: terraform-google-solution-builder-cloud-sql
-        type: map
-        key: "CLOUD_SQL_DATABASE_NAME"
-        output: database_name
+        type: map_merge
+        output: env_variables
       - compositionUnitID: terraform-google-solution-builder-redis
-        type: map
-        key: "REDIS_HOST"
-        output: redis_host
-      - compositionUnitID: terraform-google-solution-builder-redis
-        type: map
-        key: "REDIS_PORT"
-        output: redis_port
+        type: map_merge
+        output: env_variables
       - compositionUnitID: terraform-google-solution-builder-cloud-run
-        type: map
-        key: "BACKEND_SERVICE_ENDPOINT"
-        output: cloud_run_service_endpoint
+        type: map_merge
+        output: env_variables
     - name: project_id
       description: GCP project ID where the cloud run service is created
       varType: string
@@ -129,6 +114,8 @@ spec:
     - name: cloud_run_service_endpoint
       solutionOutputVariable: true
     - name: module_dependency
+      solutionOutputVariable: false
+    - name: env_variables
       solutionOutputVariable: false
   requirements:
     roles:
