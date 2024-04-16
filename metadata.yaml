@@ -115,6 +115,9 @@ spec:
     - name: cloud_run_service_endpoint
       description: Cloud Run service endpoint
       solutionOutputVariable: true
+    - name: cloud_run_service_region
+      description: Cloud Run service region
+      solutionOutputVariable: false
     - name: module_dependency
       description: Dependency variable that can be used by other modules to depend on this module
       solutionOutputVariable: false

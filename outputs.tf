@@ -19,6 +19,11 @@ output "cloud_run_service_endpoint" {
   description = "Cloud Run service endpoint"
 }
 
+output "cloud_run_service_region" {
+  description = "Cloud Run service region"
+  value = google_cloud_run_service.main.location
+}
+
 output "cloud_run_service_account_name" {
   value = "${google_service_account.runsa.account_id}@${var.project_id}.iam"
   description = "Cloud Run service account name"
