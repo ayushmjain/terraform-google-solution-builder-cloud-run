@@ -115,6 +115,9 @@ spec:
     - name: cloud_run_service_endpoint
       description: Cloud Run service endpoint
       solutionOutputVariable: true
+    - name: cloud_run_service_name
+      description: Cloud Run service name
+      solutionOutputVariable: false
     - name: cloud_run_service_region
       description: Cloud Run service region
       solutionOutputVariable: false

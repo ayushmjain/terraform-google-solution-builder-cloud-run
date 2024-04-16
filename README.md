@@ -39,10 +39,12 @@ To deploy this blueprint you must have an active billing account and billing per
 
 | Name | Description |
 |------|-------------|
-| cloud\_run\_service\_account\_name | n/a |
-| cloud\_run\_service\_endpoint | n/a |
-| env\_variables | n/a |
-| module\_dependency | n/a |
+| cloud\_run\_service\_account\_name | Cloud Run service account name |
+| cloud\_run\_service\_endpoint | Cloud Run service endpoint |
+| cloud\_run\_service\_name | Cloud Run service name |
+| cloud\_run\_service\_region | Cloud Run service region |
+| env\_variables | Cloud Run service endpoint exposed as environment variable which can be used by other compute resources to communicate with this cloud run service |
+| module\_dependency | Dependency variable that can be used by other modules to depend on this module |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
