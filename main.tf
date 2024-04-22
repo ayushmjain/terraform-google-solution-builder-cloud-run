@@ -88,7 +88,7 @@ resource "google_cloud_run_service" "main" {
   }
 
   autogenerate_revision_name = true
-  depends_on = var.dependencies
+  depends_on = [var.dependencies]
 }
 
 resource "google_cloud_run_service_iam_member" "noauth_api" {
